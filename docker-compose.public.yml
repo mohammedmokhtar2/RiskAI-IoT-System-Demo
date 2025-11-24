@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    image: mohammedmokhtar2/riskai-backend:latest  # Pulls from Cloud
+    ports:
+      - "5000:5000"
+    networks:
+      - riskai-network
+
+  frontend:
+    image: mohammedmokhtar2/riskai-frontend:latest # Pulls from Cloud
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - riskai-network
+
+networks:
+  riskai-network:
+    driver: bridge
